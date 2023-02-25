@@ -7,7 +7,6 @@ import (
 	"os"
 
 	"github.com/BurntSushi/toml"
-	"github.com/google/uuid"
 	"github.com/kirsle/go-website-template/webapp/log"
 )
 
@@ -18,11 +17,9 @@ var Current = DefaultVariable()
 type Variable struct {
 	BaseURL          string
 	AdminEmail       string
-	CronAPIKey       string
 	Mail             Mail
 	Redis            Redis
 	Database         Database
-	BareRTC          BareRTC
 	UseXForwardedFor bool
 }
 
@@ -44,7 +41,6 @@ func DefaultVariable() Variable {
 			SQLite:   "database.sqlite",
 			Postgres: "host=localhost user=webapp password=webapp dbname=webapp port=5679 sslmode=disable TimeZone=America/Los_Angeles",
 		},
-		CronAPIKey: uuid.New().String(),
 	}
 }
 
@@ -106,10 +102,4 @@ type Database struct {
 	IsPostgres bool
 	SQLite     string
 	Postgres   string
-}
-
-// BareRTC chat room settings.
-type BareRTC struct {
-	JWTSecret string
-	URL       string
 }

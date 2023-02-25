@@ -14,8 +14,11 @@ templates and has basic account management functions (sign up, in/out, admin).
     * Uses the standard `net/http` and `html/template` modules and wires it all up from scratch.
     * Middlewares including session cookie (Redis backed), Login Required, Admin Required,
       CSRF protection, logging and panic recovery all written from scratch.
+    * Session cookie features include "flashed" success/error messages that display on next
+      page load.
 * **Database**:
-    * Uses the [gorm](https://gorm.io) ORM.
+    * Uses the [gorm](https://gorm.io) ORM so that I can easily run SQLite locally but Postgres
+      on my production server.
     * A basic setup with a single `users` table and some useful query examples including
       pagination.
     * PostgreSQL and SQLite officially supported.
@@ -151,28 +154,6 @@ the web app by using the admin controls on their profile page.
   templates, issue redirects, error pages, ...
 * `pkg/utility`: miscellaneous useful functions for the app.
 
-## Cron API Endpoints
-
-In settings.json get or configure the CronAPIKey (a UUID4 value is good and
-the app generates a fresh one by default). The following are the cron API
-endpoints that you may want to configure to run periodic maintenance tasks
-on the app, such as to remove orphaned comment photos.
-
-### GET /v1/comment-photos/remove-orphaned
-
-Query parameters: `apiKey` which is the CronAPIKey.
-
-This endpoint removes orphaned CommentPhotos (photo attachments to forum
-posts). An orphaned photo is one that has no CommentID and was uploaded
-older than 24 hours ago; e.g. a user uploaded a picture but then did not
-complete the posting of their comment.
-
-Suggested crontab:
-
-```cron
-0 2 * * *  curl "http://localhost:8080/v1/comment-photos/remove-orphaned?apiKey=X"
-```
-
 ## License
 
-GPLv3.
+MIT, or whatever - I don't care.

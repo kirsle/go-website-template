@@ -48,14 +48,6 @@ const (
 	LoginRateLimitCooldownAt = 3  // 3 failed attempts = start throttling
 	LoginRateLimitCooldown   = 30 * time.Second
 
-	// Contact form rate limits for logged-out users to curb spam robots:
-	// - One message can be submitted every 2 minutes
-	// - If they post 10 minutes in an hour they are paused for one hour.
-	ContactRateLimitWindow     = 1 * time.Hour
-	ContactRateLimit           = 10
-	ContactRateLimitCooldownAt = 1
-	ContactRateLimitCooldown   = 2 * time.Minute
-
 	// How frequently to refresh LastLoginAt since sessions are long-lived.
 	LastLoginAtCooldown = 8 * time.Hour
 )
@@ -69,45 +61,6 @@ var (
 		"moderator",
 		"support",
 		"staff",
-	}
-)
-
-// Photo Galleries
-const (
-	MaxPhotoWidth     = 1280
-	ProfilePhotoWidth = 512
-
-	// Quotas for uploaded photos.
-	PhotoQuotaUncertified = 6
-	PhotoQuotaCertified   = 100
-)
-
-// Forum settings
-const (
-	// Only ++ the Views count per user per thread within a small
-	// window of time - if a user keeps reloading the same thread
-	// rapidly it does not increment the view counter more.
-	ThreadViewDebounceRedisKey = "debounce-view/user=%d/thr=%d"
-	ThreadViewDebounceCooldown = 1 * time.Hour
-)
-
-// Poll settings
-var (
-	// Max number of responses to accept for a poll (how many form
-	// values the app will read in). NOTE: also enforced in frontend
-	// UX in new_post.html, update there if you change this.
-	PollMaxAnswers = 100
-
-	// Poll color CSS classes (Bulma). Plugged in to templates like:
-	// <progress class="$CLASS">
-	// Values will wrap around for long polls.
-	PollProgressBarClasses = []string{
-		"progress is-success",
-		"progress is-link",
-		"progress is-warning",
-		"progress is-danger",
-		"progress is-primary",
-		"progress is-info",
 	}
 )
 
