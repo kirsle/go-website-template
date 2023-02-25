@@ -1,0 +1,71 @@
+{{define "content"}}
+<html>
+    <body bakground="#ffffff" color="#000000" link="#0000FF" vlink="#990099" alink="#FF0000">
+        <basefont face="Arial,Helvetica,sans-serif" size="3" color="#000000"></basefont>
+
+        <h1>User Feedback: {{.Data.Title}}</h1>
+
+        <p>
+            Dear website administrators,
+        </p>
+
+        <p>
+            A user has posted a message to you via the Contact Us form. This message
+            is viewable on your admin dashboard and the details are also copied below:
+        </p>
+
+        <ul>
+            <li>
+                <strong>Intent:</strong> {{.Data.Intent}}
+            </li>
+            <li>
+                <strong>Subject:</strong> {{.Data.Subject}}
+            </li>
+            <li>
+                <strong>Table ID:</strong>
+                {{.Data.TableID}} ({{or .Data.TableName "n/a"}})
+            </li>
+            <li>
+                <strong>Current User:</strong>
+                {{if .Data.CurrentUser}}
+                    <a href="{{.Data.BaseURL}}/u/{{.Data.CurrentUser.Username}}">{{.Data.CurrentUser.Username}}</a>
+                    (ID {{.Data.CurrentUser.ID}})
+                {{else}}
+                    <em>not a logged-in user</em>
+                {{end}}
+            </li>
+            <li>
+                <strong>Reply To:</strong>
+                {{if .Data.ReplyTo}}
+                    <a href="mailto:{{.Data.ReplyTo}}">{{.Data.ReplyTo}}</a>
+                {{else}}
+                    <em>User did not leave a reply-to address.</em>
+                {{end}}
+            </li>
+        </ul>
+
+        <p>
+            The user's message was as follows:
+        </p>
+
+        <hr>
+
+        {{if ne .Data.Message ""}}
+            {{.Data.Message}}
+        {{else}}
+            <em>No message attached.</em>
+        {{end}}
+
+        <hr>
+
+        <p>
+            To view this message on the admin dashboard, please visit:
+            <a href="{{.Data.AdminURL}}">{{.Data.AdminURL}}</a>
+        </p>
+
+        <p>
+        This is an automated e-mail; do not reply to this message.
+        </p>
+    </body>
+</html>
+{{end}}

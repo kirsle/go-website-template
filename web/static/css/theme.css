@@ -1,0 +1,56 @@
+/* Custom CSS styles */
+
+abbr {
+    cursor: help;
+}
+
+/* Container for large profile pic on user pages */
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    display: block;
+    border: 1px solid #000;
+    background-color: #fff;
+    padding: 4px;
+    position: relative;
+}
+
+.profile-photo img {
+    max-width: 100%;
+    height: auto;
+}
+
+.profile-photo .corner {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+/* Photo modals in addition to Bulma .modal-content */
+.photo-modal {
+    width: auto !important;
+    max-width: fit-content;
+    max-height: fit-content;
+}
+
+/* Custom bulma tag colors */
+.tag:not(body).is-private.is-light {
+    color: #CC00CC;
+    background-color: #FFEEFF;
+}
+
+.has-text-private {
+    color: #CC00CC;
+}
+
+.has-text-private-light {
+    color: #FF99FF;
+}
+
+.hero.is-private {
+    background-color: #b748c7;
+}
+
+.hero.is-private.is-bold {
+    background-image: linear-gradient(141deg, #b329b1 0, #9948c7 71%, #7156d2 100%);
+}

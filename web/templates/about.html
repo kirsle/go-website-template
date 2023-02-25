@@ -1,0 +1,31 @@
+{{define "title"}}About{{end}}
+{{define "content"}}
+<div class="block">
+    <section class="hero is-light is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">About {{.Title}}</h1>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="block p-4">
+    <div class="content">
+        <p>
+            {{.Title}} is a simple web app template for Go.
+        </p>
+    </div>
+
+    <div class="content block pt-1">
+        <h3><i class="fa fa-code"></i> This website is open source!</h3>
+        <p>
+            If you would like to see the source code or contribute bug fixes or new features, the
+            source code behind this website is available at
+            <a href="https://github.com/kirsle/go-website-template" target="_blank">go-website-template</a>.
+        </p>
+    </div>
+
+
+</div>
+{{end}}

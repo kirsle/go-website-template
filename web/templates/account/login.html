@@ -1,0 +1,37 @@
+{{define "title"}}Log In{{end}}
+{{define "content"}}
+<div class="container">
+    <section class="hero is-info is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">Sign in</h1>
+                <h2 class="subtitle">to your account</h2>
+            </div>
+        </div>
+    </section>
+
+    <div class="block p-4">
+        <form action="/login" method="POST">
+            {{ InputCSRF }}
+            <input type="hidden" name="next" value="{{.Next}}">
+
+            <div class="field">
+                <label class="label" for="username">Username or email:</label>
+                <input type="text" class="input" name="username" placeholder="username" autocomplete="off">
+            </div>
+
+            <div class="field">
+                <label class="label" for="password">Password:</label>
+                <input type="password" class="input" name="password" placeholder="password">
+                <p class="help">
+                    <a href="/forgot-password">Forgot?</a>
+                </p>
+            </div>
+
+            <div class="field">
+                <button type="submit" class="button is-primary">Log in</button>
+            </div>
+        </form>
+    </div>
+</div>
+{{end}}

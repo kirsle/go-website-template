@@ -1,0 +1,29 @@
+{{define "content"}}
+<html>
+    <body bakground="#ffffff" color="#000000" link="#0000FF" vlink="#990099" alink="#FF0000">
+        <basefont face="Arial,Helvetica,sans-serif" size="3" color="#000000"></basefont>
+
+        <h1>Verify your email</h1>
+
+        {{if .Data.ChangeEmail}}
+        <p>
+            Somebody (hopefully you) has requested an e-mail change on your account. To verify your
+            new e-mail address, please click on the link below.
+        </p>
+        {{else}}
+        <p>
+            Welcome to {{.Data.Title}}! To get started creating your account, verify your e-mail address
+            by clicking on the link below:
+        </p>
+        {{end}}
+
+        <p>
+        <a href="{{.Data.URL}}" target="_blank">{{.Data.URL}}</a>
+        </p>
+
+        <p>
+        This is an automated e-mail; do not reply to this message.
+        </p>
+    </body>
+</html>
+{{end}}

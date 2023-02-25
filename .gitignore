@@ -1,0 +1,4 @@
+/web/static/photos
+database.sqlite
+settings.toml
+pgdump.sql

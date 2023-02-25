@@ -1,0 +1,85 @@
+{{define "title"}}Sign Up{{end}}
+{{define "content"}}
+<div class="container">
+    <section class="hero is-info is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">Sign up</h1>
+            </div>
+        </div>
+    </section>
+
+    <div class="block content p-4">
+
+        <h1>Sign Up</h1>
+
+        {{if or .SkipEmailVerification (not .SignupToken)}}
+        <p>
+            I'm glad you're thinking about joining us here!
+        </p>
+        {{end}}
+
+        <p>
+            To start the process, enter your e-mail address below. You will be sent an e-mail to verify you
+            control that address and then you can create a username and password.
+        </p>
+
+        <form action="/signup" method="POST">
+            {{ InputCSRF }}
+            {{if .SignupToken}}
+            <input type="hidden" name="token" value="{{.SignupToken}}">
+            {{end}}
+
+            <div class="field">
+                <label class="label" for="email">Your email address:</label>
+                <input type="email" class="input"
+                    placeholder="name@domain.com"
+                    name="email"
+                    id="email"
+                    value="{{.Email}}"
+                    required {{if .SignupToken }}readonly{{end}}>
+            </div>
+
+            {{if or .SignupToken .SkipEmailVerification}}
+            <div class="field">
+                <label class="label" for="username">Enter a username:</label>
+                <input type="text" class="input"
+                    placeholder="username"
+                    name="username"
+                    id="username"
+                    value="{{.Username}}"
+                    required>
+                <small class="has-text-grey">Usernames are 3 to 32 characters a-z 0-9 . -</small>
+            </div>
+            <div class="field">
+                <label class="label" for="password">Enter a passphrase:</label>
+                <input type="password" class="input"
+                    placeholder="password"
+                    name="password"
+                    id="password"
+                    required>
+            </div>
+            <div class="field">
+                <label class="label" for="password2">Confirm passphrase:</label>
+                <input type="password" class="input"
+                    placeholder="password"
+                    name="password2"
+                    id="password2"
+                    required>
+            </div>
+            {{end}}
+
+            <div class="field">
+                <label class="checkbox">
+                    <input type="checkbox" name="confirm" value="true" required>
+                    I understand the site rules and assert that I am 18 years or older.
+                </label>
+            </div>
+
+            <div class="field">
+                <button type="submit" class="button is-primary">Continue and verify email</button>
+            </div>
+        </form>
+    </div>
+</div>
+{{end}}

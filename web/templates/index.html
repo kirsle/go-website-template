@@ -1,0 +1,88 @@
+{{define "title"}}A social network for real nudists and exhibitionists{{end}}
+{{define "content"}}
+<div class="block">
+    <section class="hero is-light is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">{{ .Title }}</h1>
+                <h2 class="subtitle">{{ .Subtitle }}</h2>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="block p-4">
+    <div class="columns">
+        <div class="column content is-three-quarters p-4">
+            <p>
+                Welcome to <strong>{{.Title}}</strong>!
+            </p>
+
+            <p>
+                This is an example Go web app starter base.
+            </p>
+        </div>
+
+        <div class="column is-one-quarter">
+
+            {{if .LoggedIn}}
+            <div class="card">
+                <header class="card-header has-background-link">
+                    <p class="card-header-title has-text-light">Welcome back, {{.CurrentUser.Username}}!</p>
+                </header>
+
+                <div class="card-content p-2">
+                    <ul class="menu-list">
+                        <li>
+                            <a href="/me">
+                                <span class="icon"><i class="fa fa-home-user"></i></span>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            {{else}}
+            <div class="card">
+                <header class="card-header has-background-link">
+                    <p class="card-header-title has-text-light">Log In</p>
+                </header>
+
+                <div class="card-content">
+                    <form action="/login" method="POST">
+                        {{ InputCSRF }}
+                        <div class="field">
+                            <label class="label" for="idx_username">Username</label>
+                            <input type="text" class="input"
+                                name="username"
+                                placeholder="username"
+                                id="idx_username"
+                                autocomplete="off">
+                        </div>
+
+                        <div class="field">
+                            <label class="label" for="idx_password">Password</label>
+                            <input type="password" class="input"
+                                name="password"
+                                placeholder="password"
+                                id="idx_password"
+                                autocomplete="off">
+                            <a href="/forgot-password">Forgot?</a>
+                        </div>
+
+                        <div class="columns">
+                            <div class="column">
+                                <button type="submit" class="button is-link is-fullwidth">Log in</button>
+                            </div>
+                            <div class="column">
+                                <a href="/signup" class="button is-secondary is-fullwidth">Sign up</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {{end}}
+        </div>
+    </div>
+</div>
+{{end}}

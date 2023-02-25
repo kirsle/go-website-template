@@ -1,0 +1,74 @@
+{{define "title"}}Admin Dashboard{{end}}
+{{define "content"}}
+<div class="container">
+    <section class="hero is-danger is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">Admin Dashboard</h1>
+            </div>
+        </div>
+    </section>
+
+    <div class="block p-4">
+        <div class="columns">
+
+            <div class="column">
+                <div class="card">
+                    <header class="card-header has-background-warning">
+                        <p class="card-header-title has-text-dark-dark">
+                            <i class="fa fa-book mr-2"></i>
+                            Admin Guidelines <span class="tag is-success ml-3">NEW!</span>
+                        </p>
+                    </header>
+
+                    <div class="card-content content">
+                        <h2>Respect the privacy of our users</h2>
+
+                        <ul>
+                            <li>
+                                We do not snoop on our users' Direct Messages unless they <strong>report</strong> a conversation
+                                for us to check out. The only way to access DMs is to <a href="#impersonate">impersonate</a> a
+                                user, which can't be done in secret.
+                            </li>
+                            <li>
+                                We treat the Certification Photos as sensitive information. Go there only when a certification
+                                photo is pending approval (red notification badges will guide the way). Do not download or leak
+                                these images; be respectful.
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card block">
+                    <header class="card-header has-background-link">
+                        <p class="card-header-title has-text-light">
+                            <i class="fa fa-gavel mr-2"></i>
+                            Admin Menu
+                        </p>
+                    </header>
+
+                    <div class="card-content">
+                        <ul class="menu-list">
+                            <li>
+                                <a href="/admin/photo/certification">
+                                    <i class="fa fa-certificate mr-2"></i>
+                                    Certification Photos
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/admin/feedback">
+                                    <i class="fa fa-message mr-2"></i>
+                                    Feedback &amp; User Reports
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{end}}

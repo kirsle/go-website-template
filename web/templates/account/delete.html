@@ -1,0 +1,72 @@
+{{define "title"}}Delete Account{{end}}
+{{define "content"}}
+<div class="container">
+    <section class="hero is-info is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Delete Account
+                </h1>
+            </div>
+        </div>
+    </section>
+
+    <div class="block p-4">
+        <div class="columns is-centered">
+            <div class="column is-half">
+                <div class="card" style="max-width: 512px">
+                    <header class="card-header has-background-danger">
+                        <p class="card-header-title has-text-light">
+                            <span class="icon"><i class="fa fa-trash"></i></span>
+                            Delete My Account
+                        </p>
+                    </header>
+                    <div class="card-content">
+                        <form method="POST" action="/account/delete">
+                            {{InputCSRF}}
+                            <div class="block content">
+                                <p>
+                                    We're sorry to see you go! If you wish to delete your account, you may do
+                                    so on this page. Your account will not be recoverable after deletion! We
+                                    will remove everything we know about your account from this server:
+                                </p>
+
+                                <ul>
+                                    <li>Your account and profile data.</li>
+                                    <li>Your photos and their data.</li>
+                                    <li>Your certification photo.</li>
+                                    <li>Your friends, direct messages, forum posts, comments, likes, and so on.</li>
+                                    <li>
+                                        Your username ({{.CurrentUser.Username}}) will be made available again
+                                        and somebody else (or you, should you sign up again) may be able to use
+                                        it in the future.
+                                    </li>
+                                </ul>
+
+                                <p>
+                                    To confirm deletion of your account, please enter your current account
+                                    password into the box below.
+                                </p>
+                            </div>
+
+                            <div class="field">
+                                <label class="label" for="password">Your current password:</label>
+                                <input type="password" class="input"
+                                    name="password"
+                                    id="password"
+                                    placeholder="Password">
+                            </div>
+
+                            <div class="block has-text-center">
+                                <button type="submit" class="button is-danger">Delete My Account</button>
+                                <a href="/me" class="button is-success">Cancel</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{{end}}

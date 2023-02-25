@@ -1,0 +1,160 @@
+{{define "title"}}People{{end}}
+{{define "content"}}
+<div class="container">
+    {{$Root := .}}
+    <section class="hero is-link is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    <i class="fa fa-people-group mr-2"></i>
+                    People
+                </h1>
+                <h2 class="subtitle">Member Directory</h2>
+            </div>
+        </div>
+    </section>
+
+    <form action="/members" method="GET">
+    <div class="p-4">
+
+        <div class="columns">
+            <div class="column">
+                Found {{.Pager.Total}} user{{Pluralize64 .Pager.Total}}
+                (page {{.Pager.Page}} of {{.Pager.Pages}}).
+            </div>
+            <div class="column is-narrow">
+                <button type="submit"
+                    class="button ml-6"
+                    name="page"
+                    value="{{.Pager.Previous}}"
+                    {{if not .Pager.HasPrevious}}disabled{{end}}>Previous</button>
+                <button type="submit"
+                    class="button button-primary"
+                    name="page"
+                    value="{{.Pager.Next}}"
+                    {{if not .Pager.HasNext}}disabled{{end}}>Next page</button>
+            </div>
+        </div>
+
+        <div class="block">
+
+            <div class="card">
+                <header class="card-header has-background-link-light">
+                    <p class="card-header-title">
+                        Search Filters
+                    </p>
+                    <button class="card-header-icon" type="button">
+                        <span class="icon">
+                            <i class="fa fa-angle-up"></i>
+                        </span>
+                    </button>
+                </header>
+                <div class="card-content">
+                    <div class="columns is-multiline">
+
+                        <div class="column">
+                            <div class="field">
+                                <label class="label">Email or username:</label>
+                                <input type="text" class="input"
+                                    name="username"
+                                    autocomplete="off"
+                                    value="{{$Root.EmailOrUsername}}">
+                            </div>
+                        </div>
+
+                        <div class="column is-narrow pr-1">
+                            <strong>Sort by:</strong>
+                        </div>
+                        <div class="column is-narrow pl-1">
+                            <div class="select is-full-width">
+                                <select id="sort" name="sort">
+                                    <option value="last_login_at desc"{{if eq .Sort "last_login_at desc"}} selected{{end}}>Last login</option>
+                                    <option value="created_at desc"{{if eq .Sort "created_at desc"}} selected{{end}}>Signup date</option>
+                                    <option value="username"{{if eq .Sort "username"}} selected{{end}}>Username (a-z)</option>
+                                    <option value="lower(name)"{{if eq .Sort "lower(name)"}} selected{{end}}>Name (a-z)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="column is-narrow">
+                            <a href="/members" class="button">Reset</a>
+                            <button type="submit" class="button is-success">
+                                <span>Search</span>
+                                <span class="icon"><i class="fa fa-search"></i></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="columns is-multiline">
+
+            {{range .Users}}
+            <div class="column is-half-tablet is-one-third-desktop">
+
+                <div class="card">
+                    <div class="card-content">
+                        <div class="media block">
+                            <div class="media-left">
+                                <figure class="image is-48x48 is-inline-block">
+                                    <a href="/u/{{.Username}}" class="has-text-dark">
+                                        <img src="/static/img/shy.png">
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <p class="title is-4">
+                                    <a href="/u/{{.Username}}" class="has-text-dark">
+                                        {{.Username}}
+                                    </a>
+                                </p>
+                                <p class="subtitle is-6 mb-2">
+                                    <span class="icon"><i class="fa fa-user"></i></span>
+                                    <a href="/u/{{.Username}}">{{.Username}}</a>
+
+                                    {{if .IsAdmin}}
+                                    <span class="has-text-danger">
+                                        <span class="icon"><i class="fa fa-gavel"></i></span>
+                                        <span>Admin</span>
+                                    </span>
+                                    {{end}}
+                                </p>
+                                <p class="subtitle is-7 mb-2">
+                                    <!-- Show a subfooter based on ordered by -->
+                                    -{{$Root.Sort}}-
+                                    {{if eq $Root.Sort "last_login_at desc"}}
+                                    <div>
+                                        <small>
+                                            Last logged in:
+                                            <span title="On {{.LastLoginAt.Format "Jan _2 2006 15:04:05 MST"}}">
+                                                {{SincePrettyCoarse .LastLoginAt}} ago
+                                            </span>
+                                        </small>
+                                    </div>
+                                    {{end}}
+
+                                    {{if eq $Root.Sort "created_at desc"}}
+                                    <div>
+                                        <small>
+                                            Member since:
+                                            <span title="On {{.CreatedAt.Format "Jan _2 2006 15:04:05 MST"}}">
+                                                {{SincePrettyCoarse .CreatedAt}} ago
+                                            </span>
+                                        </small>
+                                    </div>
+                                    {{end}}
+                                </p>
+                            </div>
+                        </div><!-- media-block -->
+                    </div>
+                </div>
+
+            </div>
+            {{end}}<!-- range .Friends -->
+        </div>
+
+    </div>
+    </form>
+</div>
+{{end}}

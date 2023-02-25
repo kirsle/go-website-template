@@ -1,0 +1,188 @@
+{{define "title"}}Untitled{{end}}
+{{define "scripts"}}{{end}}
+{{define "base"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/static/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/bulma-prefers-dark.css" />
+    <link rel="stylesheet" href="/static/fontawesome-free-6.1.2-web/css/all.css">
+    <link rel="stylesheet" href="/static/css/theme.css?build={{.BuildHash}}">
+    <title>{{template "title" .}} - {{ .Title }}</title>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                {{ .Title }}
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                {{if not .LoggedIn}}
+                <a class="navbar-item" href="/">
+                    <span class="icon"><i class="fa fa-home"></i></span>
+                    <span>Home</span>
+                </a>
+
+                <a class="navbar-item" href="/about">
+                    About
+                </a>
+                {{end}}
+
+                {{if .LoggedIn}}
+                <a class="navbar-item" href="/me">
+                    <span class="icon"><i class="fa fa-house-user"></i></span>
+                    <span>Home</span>
+                </a>
+                {{end}}
+
+                <div id="navbar-more" class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        More
+                    </a>
+
+                    <div class="navbar-dropdown is-active">
+                        {{if .LoggedIn}}
+                        <a class="navbar-item" href="/members">
+                            <span class="icon"><i class="fa fa-people-group"></i></span>
+                            <span>People</span>
+                        </a>
+                        {{end}}
+                        <a class="navbar-item" href="/about">
+                            <span class="icon"><i class="fa fa-circle-info"></i></span>
+                            <span>About</span>
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item" href="#">
+                            <span class="icon"><i class="fa fa-triangle-exclamation"></i></span>
+                            <span>Report an issue</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navbar-end">
+                {{if .LoggedIn }}
+                    <div id="navbar-user" class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link" href="/me{{if .NavUnreadNotifications}}#notifications{{end}}">
+                            <div class="columns is-mobile is-gapless">
+                                <div class="column is-narrow">
+                                    <figure class="image is-24x24 mr-2">
+                                        <img src="/static/img/shy.png" class="is-rounded has-background-warning">
+                                    </figure>
+                                </div>
+                                <div class="column">
+                                    {{.CurrentUser.Username}}
+                                </div>
+                            </div>
+                        </a>
+
+                        <div class="navbar-dropdown is-right is-hoverable">
+                            <a class="navbar-item" href="/me">
+                                <span class="icon"><i class="fa fa-home-user"></i></span>
+                                <span>Dashboard</span>
+                            </a>
+                            <a class="navbar-item" href="/settings">
+                                <span class="icon"><i class="fa fa-gear"></i></span>
+                                <span>Settings</span>
+                            </a>
+                            {{if .CurrentUser.IsAdmin}}
+                            <a class="navbar-item has-text-danger" href="/admin">
+                                <span class="icon"><i class="fa fa-gavel"></i></span>
+                                <span>Admin</span>
+                            </a>
+                            {{end}}
+                            <a class="navbar-item" href="/logout">
+                                <span class="icon"><i class="fa fa-arrow-right-from-bracket"></i></span>
+                                <span>Log out</span>
+                            </a>
+                        </div>
+                    </div>
+                {{ else }}
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a class="button is-primary" href="/signup">
+                                <strong>Sign up</strong>
+                            </a>
+                            <a class="button is-light" href="/login">
+                                Log in
+                            </a>
+                        </div>
+                    </div>
+                {{end}}
+            </div>
+        </div>
+    </nav>
+
+    <div class="container is-fullhd">
+        {{if .Flashes}}
+        <div class="notification block is-success">
+            <!-- <button class="delete"></button> -->
+
+            {{range .Flashes}}
+                <div class="block">{{.}}</div>
+            {{end}}
+        </div>
+        {{end}}
+
+        {{if .Errors}}
+        <div class="notification block is-danger">
+            <!-- <button class="delete"></button> -->
+
+            {{range .Errors}}
+                <div class="block">{{.}}</div>
+            {{end}}
+        </div>
+        {{end}}
+
+        {{template "content" .}}
+
+        <div class="block p-4 has-text-centered has-text-grey">
+            &copy; {{.YYYY}} {{.Title}}
+            <div class="columns">
+                <div class="column">
+                    <a href="/">Home</a>
+                </div>
+                <div class="column">
+                    <a href="/about">About</a>
+                </div>
+                {{if .LoggedIn}}
+                <div class="column">
+                    <a href="/me">User Dashboard</a>
+                </div>
+                <div class="column">
+                    <a href="/settings">Settings</a>
+                </div>
+                <div class="column">
+                    <a href="/logout">Log out</a>
+                </div>
+                {{else}}
+                <div class="column">
+                    <a href="/login">Log in</a>
+                </div>
+                <div class="column">
+                    <a href="/signup">Sign up</a>
+                </div>
+                {{end}}
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/static/js/bulma.js?build={{.BuildHash}}"></script>
+    <script type="text/javascript" src="/static/js/likes.js?build={{.BuildHash}}"></script>
+    <script type="text/javascript" src="/static/js/vue-3.2.45.js"></script>
+    {{template "scripts" .}}
+
+</body>
+</html>
+{{end}}

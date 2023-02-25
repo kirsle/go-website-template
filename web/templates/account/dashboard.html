@@ -1,0 +1,63 @@
+{{define "title"}}My Dashboard{{end}}
+{{define "content"}}
+<div class="container">
+    <section class="hero is-info is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">User Dashboard</h1>
+                <h2 class="subtitle">to your account</h2>
+            </div>
+        </div>
+    </section>
+
+    <div class="block p-4">
+        <div class="columns">
+            <div class="column">
+
+                <div class="card block">
+                    <header class="card-header has-background-link">
+                        <p class="card-header-title has-text-light">My Account</p>
+                    </header>
+
+                    <div class="card-content">
+                        <ul class="menu-list">
+                            <li>
+                                <a href="/settings">
+                                    <span class="icon"><i class="fa fa-edit"></i></span>
+                                    Settings
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/logout">
+                                    <span class="icon"><i class="fa fa-arrow-right-from-bracket"></i></span>
+                                    Log out
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/account/delete">
+                                    <span class="icon"><i class="fa fa-trash"></i></span>
+                                    Delete account
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            {{$Root := .}}
+
+            <div class="column">
+                <div class="card" id="notifications">
+                    <header class="card-header has-background-warning">
+                        <p class="card-header-title has-text-dark-dark">Notifications</p>
+                    </header>
+
+                    <div class="card-content">
+                        To Do.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{end}}

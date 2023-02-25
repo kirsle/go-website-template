@@ -1,0 +1,111 @@
+{{define "title"}}User Settings{{end}}
+{{define "content"}}
+<div class="container">
+    <section class="hero is-info is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">User Settings</h1>
+            </div>
+        </div>
+    </section>
+
+    {{ $User := .CurrentUser }}
+
+    <div class="block p-4">
+        <div class="columns">
+
+            <div class="column is-hidden-tablet p-4">
+                <label class="label">Jump to section:</label>
+                <ul class="menu-list">
+                    <li><a href="#account">Account Settings <small class="has-text-grey ml-2">Email &amp; password</small></a></li>
+                </ul>
+            </div>
+
+            <div class="column">
+
+                <!-- Account Settings -->
+                <form method="POST" action="/settings">
+                    <input type="hidden" name="intent" value="settings">
+                    {{InputCSRF}}
+
+                    <div class="card mb-5" id="account">
+                        <header class="card-header has-background-warning">
+                            <p class="card-header-title has-text-dark-dark">
+                                <i class="fa fa-gear pr-2"></i>
+                                Account Settings
+                            </p>
+                        </header>
+
+                        <div class="card-content">
+                            <div class="field">
+                                <label class="label" for="old_password">
+                                    Current Password
+                                </label>
+                                <input type="password" class="input"
+                                    name="old_password"
+                                    id="old_password"
+                                    placeholder="Current password"
+                                    required>
+                                <p class="help">
+                                    Enter your current password before making any changes to your
+                                    email address or setting a new password.
+                                </p>
+                            </div>
+                            <div class="field">
+                                <label class="label" for="change_email">Change Email</label>
+                                <input type="email" class="input"
+                                    id="change_email"
+                                    name="change_email"
+                                    placeholder="name@domain.com"
+                                    value="{{.CurrentUser.Email}}">
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Change Password</label>
+                                <input type="password" class="input mb-2"
+                                    name="new_password"
+                                    placeholder="New password">
+                                <input type="password" class="input mb-2"
+                                    name="new_password2"
+                                    placeholder="Confirm new password">
+                            </div>
+
+                            <div class="field">
+                                <button type="submit" class="button is-primary">
+                                    Save Account Settings
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="column">
+
+                <!-- Delete Account -->
+                <div class="card mb-5" id="account">
+                    <header class="card-header has-background-danger">
+                        <p class="card-header-title has-text-light">
+                            <i class="fa fa-gear pr-2"></i>
+                            Delete Account
+                        </p>
+                    </header>
+
+                    <div class="card-content">
+                        <p class="block">
+                            If you would like to delete your account, please click
+                            on the button below.
+                        </p>
+
+                        <p class="block">
+                            <a href="/account/delete" class="button is-danger">
+                                Delete My Account
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{end}}

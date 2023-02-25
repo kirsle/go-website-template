@@ -1,0 +1,177 @@
+{{define "title"}}Compose a Message{{end}}
+{{define "content"}}
+<div class="container">
+    <section class="hero is-info is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Admin Action
+                </h1>
+                <h2 class="subtitle">On user {{.User.Username}}</h2>
+            </div>
+        </div>
+    </section>
+
+    <div class="block p-4">
+        <div class="columns is-centered">
+            <div class="column is-half">
+
+                <div class="card" style="width: 100%; max-width: 640px">
+                    <header class="card-header has-background-link">
+                        <p class="card-header-title has-text-light">
+                            {{if eq .Intent "impersonate"}}
+                                <span class="icon"><i class="fa fa-ghost"></i></span>
+                                Impersonate User
+                            {{else if eq .Intent "ban"}}
+                                <span class="icon"><i class="fa fa-ban"></i></span>
+                                Ban User
+                            {{else if eq .Intent "promote"}}
+                                <span class="icon"><i class="fa fa-gavel"></i></span>
+                                Promote User
+                            {{else if eq .Intent "delete"}}
+                                <span class="icon"><i class="fa fa-trash"></i></span>
+                                Delete User
+                            {{end}}
+                        </p>
+                    </header>
+                    <div class="card-content">
+
+                        <div class="media block">
+                            <div class="media-left">
+                                {{template "avatar-64x64" .User}}
+                            </div>
+                            <div class="media-content">
+                                <p class="title is-4">{{.User.NameOrUsername}}</p>
+                                <p class="subtitle is-6">
+                                    <span class="icon"><i class="fa fa-user"></i></span>
+                                    <a href="/u/{{.User.Username}}" target="_blank">{{.User.Username}}</a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <form action="/admin/user-action" method="POST">
+                            {{InputCSRF}}
+                            <input type="hidden" name="intent" value="{{.Intent}}">
+                            <input type="hidden" name="user_id" value="{{.User.ID}}">
+
+                            {{if eq .Intent "impersonate"}}
+                                <div class="block content">
+                                    <h3>With great power...</h3>
+                                    <p>
+                                        By <strong>impersonating</strong> this user, you will be considered as "logged in"
+                                        to their account and have access to their messages, profile, photos and settings.
+                                    </p>
+                                    <p>
+                                        Please respect user privacy and only impersonate an account as needed to diagnose
+                                        a customer support issue or similar.
+                                    </p>
+                                    <p>
+                                        <strong class="has-text-danger">
+                                        This event is logged and will be noticed.
+                                        </strong>
+                                        Write an explanation below why you are impersonating this user. It will
+                                        be e-mailed to the admin mailing list and trigger an admin notification
+                                        and be logged as a <a href="/admin/feedback?intent=report">Report</a> to
+                                        the admin dashboard. Reports can be acknowledged, but not deleted.
+                                    </p>
+                                    <p>
+                                        Good reasons may include:
+                                        <ul>
+                                            <li>
+                                                I need to diagnose a bug report given by one of our users
+                                                (briefly describe what the bug is; e.g. user saw a database error
+                                                at the top of a page).
+                                            </li>
+                                            <li>
+                                                A user has reported a Direct Message conversation and I need to
+                                                take a look at the context. (There is no other way to read user DMs)
+                                            </li>
+                                        </ul>
+                                    </p>
+                                </div>
+
+                                <textarea class="textarea mb-4"
+                                    cols="80" rows="4"
+                                    name="reason"
+                                    placeholder="Reason"
+                                    required></textarea>
+
+                                <div class="field has-text-centered">
+                                    <button type="submit" class="button is-success">
+                                        Log in as {{.User.Username}}
+                                    </button>
+                                </div>
+                            {{else if eq .Intent "ban"}}
+                                <div class="block content">
+                                    <p>
+                                        This user is currently:
+                                        {{if eq .User.Status "active"}}
+                                            <strong class="has-text-success">Active (not banned)</strong>
+                                        {{else if eq .User.Status "disabled"}}
+                                            <strong class="has-text-warning">Disabled</strong>
+                                        {{else if eq .User.Status "banned"}}
+                                            <strong class="has-text-danger">Banned</strong>
+                                        {{end}}
+                                    </p>
+
+                                    <p>
+                                        Select a new status for them below:
+                                    </p>
+                                </div>
+
+                                <div class="field has-text-centered">
+                                    <button type="submit" name="status" value="active" class="button is-success">
+                                        Active
+                                    </button>
+                                    <button type="submit" name="status" value="banned" class="button is-danger">
+                                        Banned
+                                    </button>
+                                </div>
+                            {{else if eq .Intent "promote"}}
+                                <div class="block content">
+                                    <p>
+                                        This user is currently:
+                                        {{if .User.IsAdmin}}
+                                            <strong class="has-text-danger">Admin</strong>
+                                        {{else}}
+                                            <strong class="has-text-success">NOT Admin</strong>
+                                        {{end}}
+                                    </p>
+
+                                    <p>
+                                        Select a new status for them below:
+                                    </p>
+                                </div>
+
+                                <div class="field has-text-centered">
+                                    <button type="submit" name="action" value="promote" class="button is-success">
+                                        Make Admin
+                                    </button>
+                                    <button type="submit" name="action" value="demote" class="button is-danger">
+                                        Remove Admin
+                                    </button>
+                                </div>
+                            {{else if eq .Intent "delete"}}
+                                <div class="block content">
+                                    <p>
+                                        Click the button below to <strong>deep delete</strong> this user account.
+                                    </p>
+                                </div>
+
+                                <div class="field has-text-centered">
+                                    <button type="submit" class="button is-danger">
+                                        Delete User Account
+                                    </button>
+                                </div>
+                            {{end}}
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+{{end}}
