@@ -5,6 +5,9 @@ and support for Postgres or SQLite databases. It is a pared-down copy of a site 
 uses largely just the standard Go net/http library (and so implements session cookies, CSRF
 protection, and so on from scratch).
 
+This repo says it's licensed MIT, but really I don't care - as a template
+repository you can change it if you want for your new project.
+
 ## Features
 
 This code serves as a good base for a Go-backed web app that serves server-side rendered
@@ -23,6 +26,7 @@ templates and has basic account management functions (sign up, in/out, admin).
       pagination.
     * PostgreSQL and SQLite officially supported.
 * **Redis** cache:
+    * Session cookies.
     * For signup workflows needing email verification
     * For rate limiting failed password attempts
     * Simple API built out that (de)serializes w/e you give it as JSON into the Redis cache.
@@ -35,6 +39,8 @@ templates and has basic account management functions (sign up, in/out, admin).
     * Admin flag (endpoints to e.g. ban users may be missing)
     * CLI interface to create users locally (skipping email verification) or create the first
       admin account.
+    * Forgot password workflow by email
+    * Skeleton function for deep user account deletion (keep ahead of GDPR, etc.)
 * A few basic pages: about, dashboards, etc.
 * A simple front-end website using the [Bulma](https://bulma.io) CSS library.
 
