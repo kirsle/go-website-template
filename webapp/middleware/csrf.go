@@ -5,10 +5,10 @@ import (
 	"net/http"
 
 	"github.com/google/uuid"
-	"github.com/kirsle/go-website-template/webapp/config"
-	"github.com/kirsle/go-website-template/webapp/log"
-	"github.com/kirsle/go-website-template/webapp/session"
-	"github.com/kirsle/go-website-template/webapp/templates"
+	"github.com/aichaos/silhouette/webapp/config"
+	"github.com/aichaos/silhouette/webapp/log"
+	"github.com/aichaos/silhouette/webapp/session"
+	"github.com/aichaos/silhouette/webapp/templates"
 )
 
 // CSRF middleware. Other places to look: pkg/session/session.go, pkg/templates/template_funcs.go

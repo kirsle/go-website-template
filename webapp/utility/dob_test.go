@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/kirsle/go-website-template/webapp/utility"
+	"github.com/aichaos/silhouette/webapp/utility"
 )
 
 func TestAge(t *testing.T) {

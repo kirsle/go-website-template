@@ -53,7 +53,7 @@ The first thing you'll want to do is rename the Go module which can be done like
 MODULE_NAME="github.com/my-username/my-project"
 
 # From the working directory of this git repository checkout, e.g.
-find . -type f -name "*.go" -print0 | xargs -0 sed -i '' -e "s,github.com/kirsle/go-website-template,${MODULE_NAME},g"
+find . -type f -name "*.go" -print0 | xargs -0 sed -i'' -e "s,github.com/kirsle/go-website-template,${MODULE_NAME},g"
 sed -i'' -e "s,github.com/kirsle/go-website-template,${MODULE_NAME},g" go.mod
 ```
 

@@ -4,7 +4,7 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/kirsle/go-website-template/webapp/session"
+	"github.com/aichaos/silhouette/webapp/session"
 )
 
 // Session middleware.

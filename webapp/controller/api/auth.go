@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/kirsle/go-website-template/webapp/session"
+	"github.com/aichaos/silhouette/webapp/session"
 )
 
 // LoginOK API tests the validity of a user's session cookie.

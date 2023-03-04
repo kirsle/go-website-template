@@ -1,4 +1,4 @@
-module github.com/kirsle/go-website-template
+module github.com/aichaos/silhouette
 
 go 1.18
 

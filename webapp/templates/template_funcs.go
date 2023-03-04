@@ -9,10 +9,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/kirsle/go-website-template/webapp/config"
-	"github.com/kirsle/go-website-template/webapp/markdown"
-	"github.com/kirsle/go-website-template/webapp/session"
-	"github.com/kirsle/go-website-template/webapp/utility"
+	"github.com/aichaos/silhouette/webapp/config"
+	"github.com/aichaos/silhouette/webapp/markdown"
+	"github.com/aichaos/silhouette/webapp/session"
+	"github.com/aichaos/silhouette/webapp/utility"
 )
 
 // Generics

@@ -8,8 +8,8 @@ import (
 	"html/template"
 	"strings"
 
-	"github.com/kirsle/go-website-template/webapp/config"
-	"github.com/kirsle/go-website-template/webapp/log"
+	"github.com/aichaos/silhouette/webapp/config"
+	"github.com/aichaos/silhouette/webapp/log"
 	"github.com/microcosm-cc/bluemonday"
 	"gopkg.in/gomail.v2"
 )

@@ -3,8 +3,8 @@ package account
 import (
 	"net/http"
 
-	"github.com/kirsle/go-website-template/webapp/session"
-	"github.com/kirsle/go-website-template/webapp/templates"
+	"github.com/aichaos/silhouette/webapp/session"
+	"github.com/aichaos/silhouette/webapp/templates"
 )
 
 // User dashboard or landing page (/me).

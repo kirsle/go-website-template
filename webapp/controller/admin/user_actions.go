@@ -4,10 +4,10 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/kirsle/go-website-template/webapp/models"
-	"github.com/kirsle/go-website-template/webapp/models/deletion"
-	"github.com/kirsle/go-website-template/webapp/session"
-	"github.com/kirsle/go-website-template/webapp/templates"
+	"github.com/aichaos/silhouette/webapp/models"
+	"github.com/aichaos/silhouette/webapp/models/deletion"
+	"github.com/aichaos/silhouette/webapp/session"
+	"github.com/aichaos/silhouette/webapp/templates"
 )
 
 // Admin actions against a user account.

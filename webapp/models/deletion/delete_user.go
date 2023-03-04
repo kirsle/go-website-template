@@ -3,8 +3,8 @@ package deletion
 import (
 	"fmt"
 
-	"github.com/kirsle/go-website-template/webapp/log"
-	"github.com/kirsle/go-website-template/webapp/models"
+	"github.com/aichaos/silhouette/webapp/log"
+	"github.com/aichaos/silhouette/webapp/models"
 )
 
 // DeleteUser wipes a user and all associated data from the database.

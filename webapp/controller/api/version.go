@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/kirsle/go-website-template/webapp/config"
+	"github.com/aichaos/silhouette/webapp/config"
 )
 
 // Version details of the running app.

@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/kirsle/go-website-template/webapp/log"
-	"github.com/kirsle/go-website-template/webapp/router"
+	"github.com/aichaos/silhouette/webapp/log"
+	"github.com/aichaos/silhouette/webapp/router"
 )
 
 // WebServer is the main entry point for the `webapp web` command.

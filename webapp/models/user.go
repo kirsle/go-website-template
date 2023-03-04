@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/kirsle/go-website-template/webapp/config"
+	"github.com/aichaos/silhouette/webapp/config"
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
 )

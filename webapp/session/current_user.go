@@ -4,7 +4,7 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/kirsle/go-website-template/webapp/models"
+	"github.com/aichaos/silhouette/webapp/models"
 )
 
 // CurrentUser returns the current logged in user via session cookie.

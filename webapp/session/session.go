@@ -10,11 +10,11 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/kirsle/go-website-template/webapp/config"
-	"github.com/kirsle/go-website-template/webapp/log"
-	"github.com/kirsle/go-website-template/webapp/mail"
-	"github.com/kirsle/go-website-template/webapp/models"
-	"github.com/kirsle/go-website-template/webapp/redis"
+	"github.com/aichaos/silhouette/webapp/config"
+	"github.com/aichaos/silhouette/webapp/log"
+	"github.com/aichaos/silhouette/webapp/mail"
+	"github.com/aichaos/silhouette/webapp/models"
+	"github.com/aichaos/silhouette/webapp/redis"
 )
 
 // Session cookie object that is kept server side in Redis.

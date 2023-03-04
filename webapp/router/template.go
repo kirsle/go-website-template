@@ -4,7 +4,7 @@ import (
 	"html/template"
 	"io"
 
-	"github.com/kirsle/go-website-template/webapp/config"
+	"github.com/aichaos/silhouette/webapp/config"
 )
 
 // LoadTemplate processes and returns a template. Filename is relative

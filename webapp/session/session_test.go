@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/kirsle/go-website-template/webapp/config"
-	"github.com/kirsle/go-website-template/webapp/session"
+	"github.com/aichaos/silhouette/webapp/config"
+	"github.com/aichaos/silhouette/webapp/session"
 )
 
 func TestRemoteAddr(t *testing.T) {

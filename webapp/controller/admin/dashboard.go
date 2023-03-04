@@ -3,7 +3,7 @@ package admin
 import (
 	"net/http"
 
-	"github.com/kirsle/go-website-template/webapp/templates"
+	"github.com/aichaos/silhouette/webapp/templates"
 )
 
 // Admin dashboard or landing page (/admin).

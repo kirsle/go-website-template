@@ -3,7 +3,7 @@ package index
 import (
 	"net/http"
 
-	"github.com/kirsle/go-website-template/webapp/templates"
+	"github.com/aichaos/silhouette/webapp/templates"
 )
 
 // StaticTemplate creates a simple controller that loads a Go html/template

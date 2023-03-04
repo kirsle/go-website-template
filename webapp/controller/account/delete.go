@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/kirsle/go-website-template/webapp/models/deletion"
-	"github.com/kirsle/go-website-template/webapp/session"
-	"github.com/kirsle/go-website-template/webapp/templates"
+	"github.com/aichaos/silhouette/webapp/models/deletion"
+	"github.com/aichaos/silhouette/webapp/session"
+	"github.com/aichaos/silhouette/webapp/templates"
 )
 
 // Delete account page (self service).

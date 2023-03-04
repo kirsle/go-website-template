@@ -4,12 +4,12 @@ package router
 import (
 	"net/http"
 
-	"github.com/kirsle/go-website-template/webapp/config"
-	"github.com/kirsle/go-website-template/webapp/controller/account"
-	"github.com/kirsle/go-website-template/webapp/controller/admin"
-	"github.com/kirsle/go-website-template/webapp/controller/api"
-	"github.com/kirsle/go-website-template/webapp/controller/index"
-	"github.com/kirsle/go-website-template/webapp/middleware"
+	"github.com/aichaos/silhouette/webapp/config"
+	"github.com/aichaos/silhouette/webapp/controller/account"
+	"github.com/aichaos/silhouette/webapp/controller/admin"
+	"github.com/aichaos/silhouette/webapp/controller/api"
+	"github.com/aichaos/silhouette/webapp/controller/index"
+	"github.com/aichaos/silhouette/webapp/middleware"
 )
 
 func New() http.Handler {

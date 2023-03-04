@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"runtime/debug"
 
-	"github.com/kirsle/go-website-template/webapp/log"
+	"github.com/aichaos/silhouette/webapp/log"
 )
 
 // Recovery recovery middleware.

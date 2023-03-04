@@ -7,7 +7,7 @@ import (
 	"os"
 
 	"github.com/BurntSushi/toml"
-	"github.com/kirsle/go-website-template/webapp/log"
+	"github.com/aichaos/silhouette/webapp/log"
 )
 
 // Current loaded settings.toml

@@ -4,12 +4,12 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/kirsle/go-website-template/webapp/config"
-	"github.com/kirsle/go-website-template/webapp/log"
-	"github.com/kirsle/go-website-template/webapp/models"
-	"github.com/kirsle/go-website-template/webapp/ratelimit"
-	"github.com/kirsle/go-website-template/webapp/session"
-	"github.com/kirsle/go-website-template/webapp/templates"
+	"github.com/aichaos/silhouette/webapp/config"
+	"github.com/aichaos/silhouette/webapp/log"
+	"github.com/aichaos/silhouette/webapp/models"
+	"github.com/aichaos/silhouette/webapp/ratelimit"
+	"github.com/aichaos/silhouette/webapp/session"
+	"github.com/aichaos/silhouette/webapp/templates"
 )
 
 // Login controller.

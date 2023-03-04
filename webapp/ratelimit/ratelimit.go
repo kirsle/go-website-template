@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/kirsle/go-website-template/webapp/config"
-	"github.com/kirsle/go-website-template/webapp/redis"
-	"github.com/kirsle/go-website-template/webapp/utility"
+	"github.com/aichaos/silhouette/webapp/config"
+	"github.com/aichaos/silhouette/webapp/redis"
+	"github.com/aichaos/silhouette/webapp/utility"
 )
 
 // Limiter implements a Redis-backed rate limit for logins or otherwise.

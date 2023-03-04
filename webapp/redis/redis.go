@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/go-redis/redis/v8"
-	"github.com/kirsle/go-website-template/webapp/log"
+	"github.com/aichaos/silhouette/webapp/log"
 )
 
 var ctx = context.Background()

@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/kirsle/go-website-template/webapp/config"
+	"github.com/aichaos/silhouette/webapp/config"
 )
 
 // Pagination result object.
